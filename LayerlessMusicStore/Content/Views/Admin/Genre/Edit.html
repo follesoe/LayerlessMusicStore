@@ -1,20 +1,22 @@
 ﻿<h2>Create new Genre</h2>
 <form method="post" action="#/admin/genre/save">
     <fieldset>
-        <legend>Genre</legend>    
+        <legend>Genre</legend>  
+        
+        <input type="hidden" name="Id" value="<%= genre["@metadata"]["@Id] %>" />
 
         <div class="editor-label">
             <label for="Name">Name</label>        
         </div>
         <div class="editor-field">
-            <input type="text" name="Name" />
+            <input type="text" name="Name" value="<%= genre.Name %>" />
         </div>
 
         <div class="editor-label">
             <label for="Description">Description</label>        
         </div>
         <div class="editor-field">
-            <input type="text" name="Description" />
+            <input type="text" name="Description" value="<%= genre.Description %>" />
         </div>
 
         <p><input type="submit" value="Create" /></p>

@@ -12,13 +12,13 @@
         </tr>
     </thead>
     <tbody>
-        <% for(var i = 0; i < genres.length; ++i) { %>
+        {{#genres}}
             <tr>
-                <td><a href="#/admin/genre/delete/<%= genres[i].Id %>">delete</a></td>
-                <td><a href="#/admin/genre/edit/<%= genres[i].Id %>">edit</a></td>
-                <td><%= genres[i].Name %></td>
-                <td><%= genres[i].Description %></td>
+                <td><a href="#/admin/genre/delete/id">delete</a></td>
+                <td><a href="#/admin/genre/edit/id">edit</a></td>
+                <td>{{Name}}</td>
+                <td>{{Description}}</td>
             </tr>
-        <% } %>
+        {{/genres}}
     </tbody>
 </table>

@@ -1,5 +1,5 @@
 ﻿var app = $.sammy("#main", function() {
-    this.use(Sammy.Template, "html");
+    this.use(Sammy.Mustache, "html");
 
     this.get("#/", function(context) {
         loadData("/indexes/dynamic/genre", function(response) {
@@ -18,6 +18,10 @@
 
     this.get("#/admin/genre", function(context) {
         loadData("/indexes/dynamic/genre", function(response) {
+            var item = response.Results[0];
+            var id = item["@metadata"]["@id"];
+            console.log(item);
+            console.log(id);
             context.partial("/Content/Views/Admin/Genre/List.html", { genres: response.Results });
         });
     });
@@ -26,11 +30,21 @@
         context.partial("/Content/Views/Admin/Genre/Add.html");
     });
 
-    this.post("#/admin/genre/add", function(context) {
+    this.post("#/admin/genre/save", function(context) {
         var data = $(context.target).serializeObject();
         $.post("/App/Save/genre/", JSON.stringify(data), function() {
             context.redirect("#/admin/genre");
         });
+    });
+
+    this.post("#/admin/genre/delete/:id", function(context) {
+        var id = context.params["id"];
+        console.log("delete " + id);
+    });
+
+    this.get("#/admin/genre/edit/:id", function(context) {
+        var id = context.params["id"];
+        console.log("edit " + id);
     });
 
     var ravenUrl = "http://localhost:8080";
