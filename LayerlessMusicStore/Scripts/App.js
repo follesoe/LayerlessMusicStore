@@ -7,8 +7,9 @@
         });
     });
 
-    this.get("#/store/:genre", function(context) {
-
+    this.get("#/store/genre/:genre", function(context) {
+        var genre = context.params["genre"];
+        context.partial("/Content/Views/Albums.html", {genre: genre});
     });
 
     this.get("#/admin", function(context) {
