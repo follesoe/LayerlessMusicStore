@@ -10,6 +10,7 @@ obj
 TestResults
 
 # Solution user options files
+.idea
 *.suo
 
 # Databases

@@ -1,0 +1,24 @@
+﻿<h2>Genres</h2>
+
+<p><a href="#/admin/genre/add">Create new Genre</a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(var i = 0; i < genres.length; ++i) { %>
+            <tr>
+                <td><a href="#/admin/genre/delete/<%= genres[i].Id %>">delete</a></td>
+                <td><a href="#/admin/genre/edit/<%= genres[i].Id %>">edit</a></td>
+                <td><%= genres[i].Name %></td>
+                <td><%= genres[i].Description %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
