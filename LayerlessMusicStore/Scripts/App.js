@@ -2,7 +2,13 @@
     this.use(Sammy.Template, "html");
 
     this.get("#/", function(context) {
-        context.partial("/Content/Views/Main.html");
+        loadData("/indexes/dynamic/genre", function(response) {
+            context.partial("/Content/Views/Main.html", { genres: response.Results });
+        });
+    });
+
+    this.get("#/store/:genre", function(context) {
+
     });
 
     this.get("#/admin", function(context) {
