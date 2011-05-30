@@ -1,0 +1,19 @@
+# ReSharper meta directory
+_ReSharper*
+*.user
+
+# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
+bin
+obj
+
+# mstest test results
+TestResults
+
+# Solution user options files
+*.suo
+
+# Databases
+App_Data
+
+#NuGet packages
+packages
