@@ -8,6 +8,15 @@
         });
     });
 
+    this.get("#/store", function (context) {
+        loadData("/indexes/dynamic/genre", function (response) {
+            context.partial("/Content/Views/Store.html", { 
+                count: response.Results.length,
+                genres: response.Results 
+            });
+        });        
+    });
+
     this.get("#/store/genre/:genre", function (context) {
         var genre = context.params["genre"];
         loadData("/indexes/dynamic/album?query=Genre.Name:" + genre, function (response) {
