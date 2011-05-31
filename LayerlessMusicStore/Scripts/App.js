@@ -13,16 +13,15 @@
         loadData("/indexes/dynamic/album?query=Genre.Name:" + genre, function (response) {
             var viewData = {
                 genre: genre,
-                albums: response.Results,
-                getUrl: function () {
-                    return function (text, render) {
-                        var rendered = render(text);
-                        if (rendered) return rendered;
-                        return "/Content/Images/placeholder.gif";
-                    }
-                }
+                albums: response.Results
             };
             context.partial("/Content/Views/Albums.html", viewData);
+        });
+    });
+
+    this.get("#/store/details/:id", function (context) {
+        loadData("/indexes/dynamic/album?query=Id:" + context.params["id"], function (response) {
+            context.partial("/Content/Views/AlbumDetails.html", response.Results[0]);
         });
     });
 
@@ -41,8 +40,7 @@
     });
 
     this.get("#/admin/genre/edit/:id", function (context) {
-        var id = context.params["id"];
-        loadData("/indexes/dynamic/genre?query=Id:" + id, function (response) {
+        loadData("/indexes/dynamic/genre?query=Id:" + context.params["id"], function (response) {
             context.partial("/Content/Views/Admin/Genre/Edit.html", response.Results[0]);
         });
     });
@@ -74,6 +72,7 @@
     this.post("#/admin/album/save", function (context) {
         var album = this.params;
         album.Genre.Name = $(context.target).find("select :selected").text();
+        album.AlbumArtUrl = album.AlbumArtUrl || "/Content/Images/placeholder.gif";
         $.post("/App/Save/album/", JSON.stringify(album), function () {
             context.redirect("#/admin/album");
         });
@@ -88,5 +87,13 @@
             jsonp: "jsonp",
             success: callback
         });
+    }
+
+    function imageOrDefault() {
+        return function (text, render) {
+            var rendered = render(text);
+            if (rendered) return rendered;
+            return "/Content/Images/placeholder.gif";
+        }
     }
 });

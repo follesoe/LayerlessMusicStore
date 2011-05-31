@@ -1,0 +1,22 @@
+﻿<h2>{{Title}}</h2>
+<p>
+    <img alt="{{Title}}" src="{{AlbumArtUrl}}" />
+</p>
+
+<div id="album-details">
+    <p> 
+        <em>Genre:</em>
+        {{#Genre}}{{Name}}{{/Genre}}
+    </p>
+    <p>
+        <em>Artist:</em>
+        {{Artist}}
+    </p>
+    <p>
+        <em>Price:</em>
+        {{Price}}
+    </p>
+    <p class="button">
+        <a href="#/store/addToCart/{{Id}}">Add to cart</a>
+    </p>
+</div>
