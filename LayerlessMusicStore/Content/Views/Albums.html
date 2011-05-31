@@ -1,1 +1,13 @@
-﻿<h2>Albums from the <%= genre %> genre...</h2>
+﻿<div class="genre">
+    <h3><em>{{genre}}</em> Albums</h3>
+    <ul id="album-list">
+        {{#albums}}
+            <li>
+                <a href="#/store/details/{{Id}}">
+                    <img src="{{#getUrl}}{{AlbumArtUrl}}{{/getUrl}}" alt="{{Title}}" />
+                    <span>{{Title}}</span><br />
+                </a>
+            </li>
+        {{/albums}}
+    </ul>
+</div>

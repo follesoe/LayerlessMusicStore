@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Newtonsoft.Json.Linq;
 
 namespace LayerlessMusicStore.Controllers
@@ -16,8 +17,10 @@ namespace LayerlessMusicStore.Controllers
         {
             MvcApplication.CurrentSession.Advanced.OnEntityConverted += (e, d, m) => {
                 m["Raven-Entity-Name"] = item;
-                m.Remove("Raven-Clr-Type");
+                m.Remove("Raven-Clr-Type");                
             };
+
+            if (model["Id"] == null) model["Id"] = Guid.NewGuid().ToString();
             MvcApplication.CurrentSession.Store(model);
             MvcApplication.CurrentSession.SaveChanges();
             return new JsonResult();

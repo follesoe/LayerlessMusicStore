@@ -1,0 +1,30 @@
+﻿<h2>Genres</h2>
+
+<p><a href="#/admin/album/add">Add a new Album</a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Price</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#albums}}
+            <tr>
+                <td><a href="#/admin/album/delete/id">delete</a></td>
+                <td><a href="#/admin/album/edit/id">edit</a></td>
+                <td>{{Title}}</td>
+                <td>{{Artist}}</td>
+                <td>{{Price}}</td>
+                {{#Genre}}<td>{{Name}}</td>{{/Genre}}
+            </tr>
+        {{/albums}}
+    </tbody>
+</table>
+
+<a href="#/admin">Back</a>

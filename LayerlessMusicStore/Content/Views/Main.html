@@ -1,6 +1,6 @@
 ﻿<ul id="categories">
-    <% for(var i = 0; i < genres.length; ++i) { %>
-        <li><a href="#/store/genre/<%= genres[i].Name %>"><%= genres[i].Name %></a></li>
-    <% } %>
+    {{#genres}}
+        <li><a href="#/store/genre/{{Name}}">{{Name}}</a></li>
+    {{/genres}}
 </ul>
 <img src="/Content/Images/home-showcase.png" />

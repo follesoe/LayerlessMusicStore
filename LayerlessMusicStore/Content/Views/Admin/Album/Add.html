@@ -1,0 +1,49 @@
+﻿<h2>Create new Genre</h2>
+<form method="post" action="#/admin/album/save">
+    <fieldset>
+        <legend>Album</legend>    
+
+        <div class="editor-label">
+            <label for="Title">Title</label>        
+        </div>
+        <div class="editor-field">
+            <input type="text" name="Title" />
+        </div>
+
+        <div class="editor-label">
+            <label for="Artist">Artist</label>        
+        </div>
+        <div class="editor-field">
+            <input type="text" name="Artist" />
+        </div>
+
+        <div class="editor-label">
+            <label for="Price">Price</label>        
+        </div>
+        <div class="editor-field">
+            <input type="text" name="Price" />
+        </div>
+
+        <div class="editor-label">
+            <label for="Url">Album Art Url</label>        
+        </div>
+        <div class="editor-field">
+            <input type="text" name="AlbumArtUrl" />
+        </div>
+
+        <div class="editor-label">
+            <label for="Genre">Genre</label>        
+        </div>
+        <div class="editor-field">
+            <select name="Genre[Id]">
+                {{#genres}}
+                    <option value="genre/{{Id}}">{{Name}}</option>
+                {{/genres}}
+            </select>
+        </div>
+
+        <p><input type="submit" value="Create" /></p>
+    </fieldset>
+</form>
+
+<a href="#/admin/album">Back</a>

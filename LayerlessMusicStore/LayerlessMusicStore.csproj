@@ -80,6 +80,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Views\Admin\Album\List.html" />
+    <Content Include="Content\Views\Admin\Genre\Edit.html" />
+    <Content Include="Content\Views\Albums.html" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="DynamicJsonBinder.cs" />
     <Compile Include="Global.asax.cs">
