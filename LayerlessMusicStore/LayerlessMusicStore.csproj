@@ -80,6 +80,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Views\Admin\Album\Delete.html" />
+    <Content Include="Content\Views\Admin\Album\Edit.html" />
     <Content Include="Content\Views\Admin\Genre\Delete.html" />
     <Content Include="Scripts\Controllers\AlbumController.js" />
     <Content Include="Content\Views\Admin\Album\Add.html" />
@@ -88,10 +90,13 @@
     <Content Include="Content\Views\AlbumDetails.html" />
     <Content Include="Content\Views\Albums.html" />
     <Compile Include="Controllers\AppController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="DynamicJsonBinder.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Album.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -212,9 +217,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

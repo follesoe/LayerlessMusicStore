@@ -1,0 +1,36 @@
+﻿<h3><em>Review</em> your cart:</h3>
+
+<p class="button"><a href="#">Checkout >></a></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Album Name</th>
+            <th>Price (each)</th>
+            <th>Quantity</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#Lines}}
+            <tr>
+                {{#Album}}
+                    <td>{{Title}}</td>                    
+                {{/Album}}
+                <td>{{Price}}</td>
+                <td>{{Quantity}}</td>
+                {{#Album}}
+                    <td><a href="#/store/addToCart/{{Id}}">Remove from cart</a></td>                    
+                {{/Album}}
+            </tr>
+        {{/Lines}}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td id="cart-total">{{Total}}</td>
+    </tr>
+    </tfoot>
+</table>

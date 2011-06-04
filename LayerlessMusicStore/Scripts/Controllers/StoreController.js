@@ -26,4 +26,10 @@
         });
     });
 
+    this.get("#/store/addToCart/:id", function (context) {
+        $.post("/ShoppingCart/AddToCart/" + context.params["id"], function (response) {
+            context.partial("/Content/Views/Cart.html", response);
+        });
+    });
+
 });
