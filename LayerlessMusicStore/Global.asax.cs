@@ -2,8 +2,10 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+
 using Raven.Client;
 using Raven.Client.Document;
+using Raven.Client.Extensions;
 
 namespace LayerlessMusicStore
 {
@@ -19,7 +21,7 @@ namespace LayerlessMusicStore
 
         public MvcApplication()
         {
-            BeginRequest += (s, a) => HttpContext.Current.Items[RavenSessionKey] = _documentStore.OpenSession();
+            BeginRequest += (s, a) => HttpContext.Current.Items[RavenSessionKey] = _documentStore.OpenSession("MusicStore");
             EndRequest += (s, e) =>
             {
                 var disposable = HttpContext.Current.Items[RavenSessionKey] as IDisposable;
@@ -31,6 +33,7 @@ namespace LayerlessMusicStore
         {
             _documentStore = new DocumentStore { Url = "http://localhost:8080" };
             _documentStore.Initialize();
+            _documentStore.DatabaseCommands.EnsureDatabaseExists("MusicStore");
 
             AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);

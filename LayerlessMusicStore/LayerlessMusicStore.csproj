@@ -80,6 +80,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\Controllers\AlbumController.js" />
     <Content Include="Content\Views\Admin\Album\Add.html" />
     <Content Include="Content\Views\Admin\Album\List.html" />
     <Content Include="Content\Views\Admin\Genre\Edit.html" />
