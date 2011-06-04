@@ -23,9 +23,16 @@
         });
     });
 
+    this.get("#/admin/genre/delete/:id", function (context) {
+        rest.loadData("/indexes/dynamic/genre?query=Id:" + context.params["id"], function (response) {
+            context.partial("/Content/Views/Admin/Genre/Delete.html", response.Results[0]);
+        });
+    });
+
     this.post("#/admin/genre/delete/:id", function (context) {
-        var id = context.params["id"];
-        console.log("delete " + id);
+        $.post("/App/Delete/" + context.params["id"], function () {
+            context.redirect("#/admin/genre");
+        });
     });
 
 });

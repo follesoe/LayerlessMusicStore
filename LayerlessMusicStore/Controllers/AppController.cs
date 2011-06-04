@@ -13,6 +13,14 @@ namespace LayerlessMusicStore.Controllers
         }
 
         [HttpPost]
+        public void Delete(string id)
+        {
+            var item = MvcApplication.CurrentSession.Load<JObject>(id);
+            MvcApplication.CurrentSession.Delete(item);
+            MvcApplication.CurrentSession.SaveChanges();
+        }
+
+        [HttpPost]
         public ActionResult Save(string item, [DynamicJson] JObject model)
         {
             MvcApplication.CurrentSession.Advanced.OnEntityConverted += (e, d, m) => {

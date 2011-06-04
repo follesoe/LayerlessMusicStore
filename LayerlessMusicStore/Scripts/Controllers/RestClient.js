@@ -1,5 +1,5 @@
 ﻿var rest = (function () {
-    var ravenUrl = "http://localhost:8080";
+    var ravenUrl = "http://localhost:8080/databases/musicstore";
 
     this.loadData = function (path, callback) {
         $.ajax({
