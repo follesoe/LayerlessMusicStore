@@ -7,33 +7,42 @@ namespace LayerlessMusicStore.Controllers
     public class ShoppingCartController : Controller
     {
         public const string CartSessionKey = "CartId";
+       
+        [HttpGet]
+        public JsonResult ViewCart()
+        {
+            return new JsonResult { Data = GetShoppingCart(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
 
         [HttpPost]
         public JsonResult AddToCart(string id)
         {
-            var chart = GetShoppingChart();            
-            chart.AddToChart(MvcApplication.CurrentSession.Load<Album>(id));
-            return new JsonResult { Data = chart };
+            var cart = GetShoppingCart();            
+            cart.AddToChart(MvcApplication.CurrentSession.Load<Album>(id));
+            MvcApplication.CurrentSession.Store(cart);
+            MvcApplication.CurrentSession.SaveChanges();
+            return new JsonResult { Data = cart };
         }
 
         [HttpPost]
         public JsonResult RemoveFromCart(string id)
         {
-            var chart = GetShoppingChart();
-            chart.RemoveFromChart(id);
-            return new JsonResult { Data = chart };
+            var cart = GetShoppingCart();
+            cart.RemoveFromChart(id);
+            MvcApplication.CurrentSession.Store(cart);
+            MvcApplication.CurrentSession.SaveChanges();
+            return new JsonResult { Data = cart };
         }
 
-        private ShoppingCart GetShoppingChart()
+        private ShoppingCart GetShoppingCart()
         {
-            var chartId = GetCartId();
-            var chart = MvcApplication.CurrentSession.Load<ShoppingCart>(chartId);
-            if (chart == null)
+            var cartId = GetCartId();
+            var cart = MvcApplication.CurrentSession.Load<ShoppingCart>(cartId);
+            if (cart == null)
             {
-                chart = new ShoppingCart {Id = chartId};
-                MvcApplication.CurrentSession.Store(chart);
+                cart = new ShoppingCart {Id = cartId};
             }
-            return chart;
+            return cart;
         }
 
         private string GetCartId()

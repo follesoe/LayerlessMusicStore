@@ -6,7 +6,14 @@
             url: ravenUrl + path,
             dataType: "jsonp",
             jsonp: "jsonp",
-            success: callback
+            success: function (data) {
+                if (data.Results) {
+                    for (var i = 0; i < data.Results.length; ++i) {
+                        data.Results[i].Id = data.Results[i].Id || data.Results[i]["@metadata"]["@id"];
+                    }
+                }
+                callback(data);
+            }
         });
     }
 

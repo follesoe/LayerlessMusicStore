@@ -83,6 +83,7 @@
     <Content Include="Content\Views\Admin\Album\Delete.html" />
     <Content Include="Content\Views\Admin\Album\Edit.html" />
     <Content Include="Content\Views\Admin\Genre\Delete.html" />
+    <Content Include="Content\Views\Cart.html" />
     <Content Include="Scripts\Controllers\AlbumController.js" />
     <Content Include="Content\Views\Admin\Album\Add.html" />
     <Content Include="Content\Views\Admin\Album\List.html" />
