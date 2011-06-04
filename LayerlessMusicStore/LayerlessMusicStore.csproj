@@ -130,7 +130,7 @@
     <Content Include="Content\Views\Store.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\Controllers\App.js" />
     <Content Include="Scripts\jquery-1.6.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.1.js" />
     <Content Include="Scripts\jquery-1.6.1.min.js" />

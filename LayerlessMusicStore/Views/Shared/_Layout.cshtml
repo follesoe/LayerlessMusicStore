@@ -10,7 +10,8 @@
     <script src="@Url.Content("~/Scripts/sammy/sammy.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/sammy/sammy.nested_params.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/sammy/sammy.mustache.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/App.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Controllers/App.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Controllers/GenreController.js")" type="text/javascript"></script>
 </head>
 <body>
     <div id="header">
@@ -28,11 +29,5 @@
     <div id="footer">
         built with sammy.js, RavenDB & ASP.NET MVC 3</a>
     </div>
-    
-    <script type="text/javascript">
-        $(function () {
-            app.run("#/");
-        });
-    </script>
 </body>
 </html>
