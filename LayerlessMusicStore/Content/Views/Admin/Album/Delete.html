@@ -1,0 +1,14 @@
+﻿<h2>Delete Confirmation</h2>
+
+<p>Are you sure you want to delete the Album titled 
+   <strong>{{Title}}</strong> by <strong>{{Artist}}</strong>?
+</p>
+
+<form method="post" action="#/admin/album/delete/{{Id}}">
+    <p>
+        <input type="submit" value="Delete" />
+    </p>
+    <p>
+        <a href="#/admin/album">Back to List</a>
+    </p>
+</form>
