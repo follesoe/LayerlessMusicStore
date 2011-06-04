@@ -6,4 +6,13 @@
 
 <img src="/Content/Images/home-showcase.png" />
 <h3><em>Fresh</em> off the grill</h3>
-
+<ul id="album-list">
+    {{#albums}}
+        <li>
+            <a href="#/store/details/{{Id}}">
+                <img alt="{{Title}}" src="{{AlbumArtUrl}}" />
+                <span>{{Title}}</span>
+            </a>
+        </li>
+    {{/albums}}
+</ul>
