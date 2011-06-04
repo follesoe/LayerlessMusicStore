@@ -131,6 +131,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\Controllers\App.js" />
+    <Content Include="Scripts\Controllers\GenreController.js" />
+    <Content Include="Scripts\Controllers\RestClient.js" />
+    <Content Include="Scripts\Controllers\StoreController.js" />
     <Content Include="Scripts\jquery-1.6.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.1.js" />
     <Content Include="Scripts\jquery-1.6.1.min.js" />

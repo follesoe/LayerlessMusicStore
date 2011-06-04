@@ -8,67 +8,9 @@
         });
     });
 
-    this.get("#/store", function (context) {
-        rest.loadData("/indexes/dynamic/genre", function (response) {
-            context.partial("/Content/Views/Store.html", {
-                count: response.Results.length,
-                genres: response.Results
-            });
-        });
-    });
-
-    this.get("#/store/genre/:genre", function (context) {
-        var genre = context.params["genre"];
-        rest.loadData("/indexes/dynamic/album?query=Genre.Name:" + genre, function (response) {
-            var viewData = {
-                genre: genre,
-                albums: response.Results
-            };
-            context.partial("/Content/Views/Albums.html", viewData);
-        });
-    });
-
-    this.get("#/store/details/:id", function (context) {
-        rest.loadData("/indexes/dynamic/album?query=Id:" + context.params["id"], function (response) {
-            context.partial("/Content/Views/AlbumDetails.html", response.Results[0]);
-        });
-    });
-
     this.get("#/admin", function (context) {
         context.partial("/Content/Views/Admin/Main.html");
     });
-
-    this.get("#/admin/album", function (context) {
-        rest.loadData("/indexes/dynamic/album", function (response) {
-            context.partial("/Content/Views/Admin/Album/List.html", { albums: response.Results });
-        });
-    });
-
-    this.get("#/admin/album/add", function (context) {
-        rest.loadData("/indexes/dynamic/genre", function (response) {
-            context.partial("/Content/Views/Admin/Album/Add.html", { genres: response.Results });
-        });
-    });
-
-    this.post("#/admin/album/save", function (context) {
-        var album = this.params;
-        album.Genre.Name = $(context.target).find("select :selected").text();
-        album.AlbumArtUrl = album.AlbumArtUrl || "/Content/Images/placeholder.gif";
-        $.post("/App/Save/album/", JSON.stringify(album), function () {
-            context.redirect("#/admin/album");
-        });
-    });
-
-    var ravenUrl = "http://localhost:8080";
-
-    this.loadData = function(path, callback) {
-        $.ajax({
-            url: ravenUrl + path,
-            dataType: "jsonp",
-            jsonp: "jsonp",
-            success: callback
-        });
-    }
 });
 
 $(function () {
