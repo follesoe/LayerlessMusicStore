@@ -1,7 +1,7 @@
 ﻿var genreController = $.sammy("#main", function () {
 
     this.get("#/admin/genre", function (context) {
-        loadData("/indexes/dynamic/genre", function (response) {
+        rest.loadData("/indexes/dynamic/genre", function (response) {
             context.partial("/Content/Views/Admin/Genre/List.html", { genres: response.Results });
         });
     });
@@ -11,7 +11,7 @@
     });
 
     this.get("#/admin/genre/edit/:id", function (context) {
-        loadData("/indexes/dynamic/genre?query=Id:" + context.params["id"], function (response) {
+        rest.loadData("/indexes/dynamic/genre?query=Id:" + context.params["id"], function (response) {
             context.partial("/Content/Views/Admin/Genre/Edit.html", response.Results[0]);
         });
     });
@@ -27,16 +27,5 @@
         var id = context.params["id"];
         console.log("delete " + id);
     });
-
-    var ravenUrl = "http://localhost:8080";
-
-    function loadData(path, callback) {
-        $.ajax({
-            url: ravenUrl + path,
-            dataType: "jsonp",
-            jsonp: "jsonp",
-            success: callback
-        });
-    }
 
 });

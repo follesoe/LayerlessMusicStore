@@ -3,13 +3,13 @@
     this.use(Sammy.NestedParams);
 
     this.get("#/", function (context) {
-        loadData("/indexes/dynamic/genre", function (response) {
+        rest.loadData("/indexes/dynamic/genre", function (response) {
             context.partial("/Content/Views/Main.html", { genres: response.Results });
         });
     });
 
     this.get("#/store", function (context) {
-        loadData("/indexes/dynamic/genre", function (response) {
+        rest.loadData("/indexes/dynamic/genre", function (response) {
             context.partial("/Content/Views/Store.html", {
                 count: response.Results.length,
                 genres: response.Results
@@ -19,7 +19,7 @@
 
     this.get("#/store/genre/:genre", function (context) {
         var genre = context.params["genre"];
-        loadData("/indexes/dynamic/album?query=Genre.Name:" + genre, function (response) {
+        rest.loadData("/indexes/dynamic/album?query=Genre.Name:" + genre, function (response) {
             var viewData = {
                 genre: genre,
                 albums: response.Results
@@ -29,7 +29,7 @@
     });
 
     this.get("#/store/details/:id", function (context) {
-        loadData("/indexes/dynamic/album?query=Id:" + context.params["id"], function (response) {
+        rest.loadData("/indexes/dynamic/album?query=Id:" + context.params["id"], function (response) {
             context.partial("/Content/Views/AlbumDetails.html", response.Results[0]);
         });
     });
@@ -39,13 +39,13 @@
     });
 
     this.get("#/admin/album", function (context) {
-        loadData("/indexes/dynamic/album", function (response) {
+        rest.loadData("/indexes/dynamic/album", function (response) {
             context.partial("/Content/Views/Admin/Album/List.html", { albums: response.Results });
         });
     });
 
     this.get("#/admin/album/add", function (context) {
-        loadData("/indexes/dynamic/genre", function (response) {
+        rest.loadData("/indexes/dynamic/genre", function (response) {
             context.partial("/Content/Views/Admin/Album/Add.html", { genres: response.Results });
         });
     });
@@ -61,21 +61,13 @@
 
     var ravenUrl = "http://localhost:8080";
 
-    function loadData(path, callback) {
+    this.loadData = function(path, callback) {
         $.ajax({
             url: ravenUrl + path,
             dataType: "jsonp",
             jsonp: "jsonp",
             success: callback
         });
-    }
-
-    function imageOrDefault() {
-        return function (text, render) {
-            var rendered = render(text);
-            if (rendered) return rendered;
-            return "/Content/Images/placeholder.gif";
-        }
     }
 });
 
