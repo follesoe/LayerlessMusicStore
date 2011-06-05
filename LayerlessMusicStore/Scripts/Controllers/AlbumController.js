@@ -1,20 +1,20 @@
 ﻿var albumController = $.sammy("#main", function () {
 
     this.get("#/admin/album", function (context) {
-        rest.loadData("/indexes/dynamic/album", function (response) {
+        rest.loadEntities("album", function (response) {
             context.partial("/Content/Views/Admin/Album/List.html", { albums: response.Results });
         });
     });
 
     this.get("#/admin/album/add", function (context) {
-        rest.loadData("/indexes/dynamic/genre", function (response) {
+        rest.loadEntities("genre", function (response) {
             context.partial("/Content/Views/Admin/Album/Add.html", { genres: response.Results });
         });
     });
 
     this.get("#/admin/album/edit/:id", function (context) {
-        rest.loadData("/indexes/dynamic/genre", function (genreResponse) {
-            rest.loadData("/indexes/dynamic/album?query=Id:" + context.params["id"], function (albumResponse) {
+        rest.loadEntities("genre", function (genreResponse) {
+            rest.loadEntities("album&Id:" + context.params["id"], function (albumResponse) {
                 var album = albumResponse.Results[0];
                 album.genres = genreResponse.Results;
                 context.partial("/Content/Views/Admin/Album/Edit.html", album);
@@ -32,7 +32,7 @@
     });
 
     this.get("#/admin/album/delete/:id", function (context) {
-        rest.loadData("/indexes/dynamic/album?query=Id:" + context.params["id"], function (response) {
+        rest.loadEntities("album&Id:" + context.params["id"], function (response) {
             context.partial("/Content/Views/Admin/Album/Delete.html", response.Results[0]);
         });
     });

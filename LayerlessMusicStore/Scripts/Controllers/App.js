@@ -3,8 +3,8 @@
     this.use(Sammy.NestedParams);
 
     this.get("#/", function (context) {
-        rest.loadData("/indexes/dynamic/genre", function (genreResponse) {
-            rest.loadData("/indexes/Raven/DocumentsByEntityName?query=Tag:album&start=0&pageSize=5", function (albumResponse) {
+        rest.loadEntities("genre", function (genreResponse) {
+            rest.loadEntities("album&start=0&pageSize=5", function (albumResponse) {
                 context.partial("/Content/Views/Main.html", {
                     genres: genreResponse.Results,
                     albums: albumResponse.Results

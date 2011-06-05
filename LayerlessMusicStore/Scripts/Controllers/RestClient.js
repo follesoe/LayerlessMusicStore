@@ -15,9 +15,14 @@
                 callback(data);
             }
         });
-    }
+    };
+
+    this.loadEntities = function (name, callback) {
+        loadData("/indexes/Raven/DocumentsByEntityName?query=Tag:" + name, callback);
+    };
 
     return {
-        loadData: loadData
+        loadData: loadData,
+        loadEntities: loadEntities
     };
 })();
