@@ -11,7 +11,7 @@
     });
 
     this.get("#/admin/genre/edit/:id", function (context) {
-        rest.loadEntities("genre&Id:" + context.params["id"], function (response) {
+        rest.loadData("/indexes/dynamic/genre?query=Id:" + context.params["id"], function (response) {
             context.partial("/Content/Views/Admin/Genre/Edit.html", response.Results[0]);
         });
     });
@@ -24,7 +24,7 @@
     });
 
     this.get("#/admin/genre/delete/:id", function (context) {
-        rest.loadEntities("genre&Id:" + context.params["id"], function (response) {
+        rest.loadData("/indexes/dynamic/genre?query=Id:" + context.params["id"], function (response) {
             context.partial("/Content/Views/Admin/Genre/Delete.html", response.Results[0]);
         });
     });

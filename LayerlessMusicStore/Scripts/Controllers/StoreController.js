@@ -11,7 +11,7 @@
 
     this.get("#/store/genre/:genre", function (context) {
         var genre = context.params["genre"];
-        rest.loadEntities("album&Genre.Name:" + genre, function (response) {
+        rest.loadData("/indexes/dynamic/album?query=Genre.Name:\"" + encodeURI(genre) + "\"", function (response) {
             var viewData = {
                 genre: genre,
                 albums: response.Results
@@ -21,7 +21,7 @@
     });
 
     this.get("#/store/details/:id", function (context) {
-        rest.loadEntities("album&Id:" + context.params["id"], function (response) {
+        rest.loadData("/indexes/dynamic/album?query=Id:" + context.params["id"], function (response) {
             context.partial("/Content/Views/AlbumDetails.html", response.Results[0]);
         });
     });
