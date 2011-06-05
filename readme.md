@@ -1,6 +1,7 @@
 # LayerlessMusicStore Demo Application
-This repository hosts the demo application presented in the "Simpler Web Architecture" talk at NDC2011. 
-The application is a port of (some of) the functionality found in the [ASP.NET MVC Music Store example](mvcmusicstore.codeplex.com).
+This repository hosts the demo application presented by Tore Vestues and Jonas Follesø in 
+the "*When less is more - Agile web architecture*" talk at NDC2011. The application is a port of (some of) the functionality 
+found in the [ASP.NET MVC Music Store example](mvcmusicstore.codeplex.com).
  
 The implementation tries to demonstrate a different and simpler approach to architecting web applications. 
 The implementation uses [RavenDB](http://ravendb.net/) as a schema less document store, and retrieves the information directly 
