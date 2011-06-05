@@ -92,10 +92,10 @@
     <Content Include="Content\Views\Albums.html" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
-    <Compile Include="DynamicJsonBinder.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LayerlessApp.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

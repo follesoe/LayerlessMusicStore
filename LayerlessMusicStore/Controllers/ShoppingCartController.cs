@@ -18,9 +18,9 @@ namespace LayerlessMusicStore.Controllers
         public JsonResult AddToCart(string id)
         {
             var cart = GetShoppingCart();            
-            cart.AddToChart(MvcApplication.CurrentSession.Load<Album>(id));
-            MvcApplication.CurrentSession.Store(cart);
-            MvcApplication.CurrentSession.SaveChanges();
+            cart.AddToChart(LayerlessApp.CurrentSession.Load<Album>(id));
+            LayerlessApp.CurrentSession.Store(cart);
+            LayerlessApp.CurrentSession.SaveChanges();
             return new JsonResult { Data = cart };
         }
 
@@ -29,15 +29,15 @@ namespace LayerlessMusicStore.Controllers
         {
             var cart = GetShoppingCart();
             cart.RemoveFromChart(id);
-            MvcApplication.CurrentSession.Store(cart);
-            MvcApplication.CurrentSession.SaveChanges();
+            LayerlessApp.CurrentSession.Store(cart);
+            LayerlessApp.CurrentSession.SaveChanges();
             return new JsonResult { Data = cart };
         }
 
         private ShoppingCart GetShoppingCart()
         {
             var cartId = GetCartId();
-            var cart = MvcApplication.CurrentSession.Load<ShoppingCart>(cartId);
+            var cart = LayerlessApp.CurrentSession.Load<ShoppingCart>(cartId);
             if (cart == null)
             {
                 cart = new ShoppingCart {Id = cartId};
