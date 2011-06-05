@@ -1,5 +1,5 @@
 # LayerlessMusicStore Demo Application
-This repository hosts the demo application presented by Tore Vestues and Jonas Follesø in 
+This repository hosts the demo application presented by Tore Vestues and Jonas Folleso in 
 the "*When less is more - Agile web architecture*" talk at NDC2011. The application is a port of (some of) the functionality 
 found in the [ASP.NET MVC Music Store example](mvcmusicstore.codeplex.com).
  
